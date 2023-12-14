@@ -19,7 +19,7 @@
 
 | Demo |
 |------|
-| ![Demo GIF](assets/demo.gif) |
+| <img src="assets/demo.gif" width="250"> |
 
 ### Screenshots
 
