@@ -1,3 +1,38 @@
+# React Native Dynamic POST API Call Demo
+
+"This React Native project illustrates a dynamic Post API call featuring input fields and form data. The application allows users to interact with a form, make a POST request to an API, and then displays the results in a modal. The modal provides a user-friendly interface to view the outcomes of the API call."
+
+## Table of Contents
+- [Features](#features)
+- [Demo](#demo)
+- [Screenshots](#Screenshots)
+- [Installation](#installation)
+
+## Features
+
+- **Dynamic Post API Call:** Submit dynamic data (name, age, email) to a remote API.
+- **Loading Indicator:** Display an activity indicator with a dynamic loading message.
+- **Modal:** Utilize a modal to present the results of the dynamic API call.
+- **Styling:** Clean and responsive UI with thoughtfully chosen styling.
+
+## Demo
+
+![Demo GIF](dassets/demo.gif)
+
+### Screenshots
+
+| Home Screen | Loading Indicator | Modal Result |
+|-------------|--------------------|--------------|
+| ![Home Screen](assets/screenshot_home.png) | ![Home Screen With Data](assets/sscreenshot_home2.png) | ![Loading Indicator](assets/screenshot_loading.png) | ![Modal Result](assets/screenshot_modal.png) |
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/amoltdhage/ReactNative-DynamicPostAPIDemo.git
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
