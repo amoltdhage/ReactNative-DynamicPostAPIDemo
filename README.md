@@ -23,9 +23,9 @@
 
 ### Screenshots
 
-| Home Screen | Home Screen With Data | Loading Indicator | Modal Result |
-|-------------|------------------------|--------------------|--------------|
-| <img src="assets/screenshot_home.png" width="255"> | <img src="assets/screenshot_home2.png" width="255"> | <img src="assets/screenshot_loading.png" width="255"> | <img src="assets/screenshot_modal.png" width="255"> |
+| Home Screen | Loading Indicator | Modal Result |
+|-------------|--------------------|--------------|
+| ![Home Screen](assets/screenshot_home.png) | ![Home Screen With Data](assets/sscreenshot_home2.png) | ![Loading Indicator](assets/screenshot_loading.png) | ![Modal Result](assets/screenshot_modal.png) |
 
 ## Installation
 
