@@ -1,9 +1,9 @@
-// /**
-//  * Sample React Native App
-//  * https://github.com/facebook/react-native
-//  *
-//  * @format
-//  */
+// // /**
+// //  * Sample React Native App
+// //  * https://github.com/facebook/react-native
+// //  *
+// //  * @format
+// //  */
 
 import React, { useState, useRef } from 'react';
 import {
@@ -15,6 +15,7 @@ import {
   ActivityIndicator,
   Modal,
   TouchableHighlight,
+  Alert,
 } from 'react-native';
 
 const App = () => {
@@ -27,14 +28,52 @@ const App = () => {
   const [loadingText, setLoadingText] = useState('');
   const activityIndicatorRef = useRef(null);
 
+  const validateEmail = (inputText) => {
+    // A more robust email validation regex
+    const emailRegex =
+      /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}(\.[a-zA-Z]{2,4})?$/;
+    return emailRegex.test(inputText);
+  };
+
   const saveAPIData = async () => {
+    // Validation for the name field
+    if (!name.trim()) {
+      Alert.alert('Validation Error', 'Please enter your name.');
+      return;
+    }
+
+    // Allow names with single spaces and alphabets
+    if (!/^[a-zA-Z]+(\s[a-zA-Z]+)*$/.test(name)) {
+      Alert.alert('Validation Error', 'Name can only contain alphabets and single spaces between words.');
+      return;
+    }
+
+    // Validation for the age field
+    if (!age) {
+      Alert.alert('Validation Error', 'Please enter your age.');
+      return;
+    }
+
+    const ageNumber = parseInt(age, 10);
+
+    // Allow only two-digit numbers for age
+    if (!/^\d{2}$/.test(age) || ageNumber < 10 || ageNumber > 99) {
+      Alert.alert('Validation Error', 'Age should be a number with two digits between 10 and 99.');
+      return;
+    }
+
+    if (!email || !validateEmail(email)) {
+      Alert.alert('Validation Error', 'Please enter a valid email address.');
+      return;
+    }
+
     setIsLoading(true);
     setShowModal(false);
     setLoadingText('Adding New Data...');
 
     const data = {
       name: name,
-      age: parseInt(age), // assuming age is a number
+      age: ageNumber, // assuming age is a number
       email: email,
     };
 
@@ -75,28 +114,44 @@ const App = () => {
       <Text style={styles.title}>Post API Call</Text>
 
       <View style={styles.formContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          value={name}
-          onChangeText={(text) => setName(text)}
-        />
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Name<Text style={styles.required}>*</Text>:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your name"
+            value={name}
+            onChangeText={(text) => setName(text)}
+            keyboardType="default" // Default keyboard for name
+          />
+        </View>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Age"
-          value={age}
-          onChangeText={(text) => setAge(text)}
-          keyboardType="numeric"
-        />
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Age<Text style={styles.required}>*</Text>:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your age (10-99)"
+            value={age}
+            onChangeText={(text) => {
+              // Allow only two digits
+              if (/^\d{0,2}$/.test(text)) {
+                setAge(text);
+              }
+            }}
+            keyboardType="numeric" // Numeric keyboard for age
+            maxLength={2} // Limit the input to 2 characters
+          />
+        </View>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="email-address"
-        />
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Email<Text style={styles.required}>*</Text>:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            keyboardType="email-address" // Email keyboard for email
+          />
+        </View>
       </View>
 
       <TouchableOpacity style={styles.blueButton} onPress={saveAPIData}>
@@ -166,6 +221,16 @@ const styles = StyleSheet.create({
   formContainer: {
     width: '100%',
     marginBottom: 20,
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 18,
+    marginBottom: 5,
+  },
+  required: {
+    color: 'red',
   },
   input: {
     height: 40,
