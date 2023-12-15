@@ -6,6 +6,7 @@
 - [Features](#features)
 - [Demo](#demo)
 - [Screenshots](#Screenshots)
+- [TextFieldValidations](#TextFieldValidations)
 - [Installation](#installation)
 
 ## Features
@@ -26,6 +27,34 @@
 | Home Screen | Home Screen With Data | Loading Indicator | Modal Result |
 |-------------|------------------------|--------------------|--------------|
 | <img src="assets/screenshot_home.png" width="250"> | <img src="assets/screenshot_home2.png" width="250"> | <img src="assets/screenshot_loading.png" width="250"> | <img src="assets/screenshot_modal.png" width="250"> |
+
+
+### Text Field Validations
+
+In this application, we have implemented validations for each text field to ensure data integrity and improve user experience. Below are the details of the validations for each field:
+
+### Name Field
+
+- **Requirement:** Mandatory
+- **Validation Criteria:**
+  - Cannot be empty or contain only spaces.
+  - Allows only alphabets and single spaces between words.
+
+### Age Field
+
+- **Requirement:** Mandatory
+- **Validation Criteria:**
+  - Must be a two-digit number.
+  - Should be between the age range of 10 to 99.
+
+### Email Field
+
+- **Requirement:** Mandatory
+- **Validation Criteria:**
+  - Must be a valid email address format.
+
+These validations help maintain the quality of data and provide users with clear guidelines for input.
+
 
 ## Installation
 
